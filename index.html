@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!--
+  SPDX-License-Identifier: AGPL-3.0-or-later
+  SPDX-FileCopyrightText: 2026 Hallatec Technology Solutions LLC
+
+  Lifeline - part of Hallatec Forge.
+  Canonical: https://lifeline.hallatec.com/
+  Source:    https://github.com/hallatec/hallatec-lifeline
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lifeline - Backup &amp; Recovery Planner · Hallatec Forge</title>
+<meta name="description" content="Will today's backup actually recover your business in time? Lifeline turns your storage, window, bandwidth and retention into a recovery-feasibility verdict." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/hallatec.css?v=3" />
+<link rel="canonical" href="https://lifeline.hallatec.com/" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Lifeline - Backup & Recovery Planner",
+  "url": "https://lifeline.hallatec.com/",
+  "applicationCategory": "SecurityApplication",
+  "operatingSystem": "Web browser",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AED" },
+  "description": "Turns your storage, backup window and bandwidth into a recovery-feasibility verdict against your target RTO and RPO.",
+  "isAccessibleForFree": true,
+  "publisher": { "@type": "Organization", "name": "Hallatec Technology Solutions LLC", "url": "https://hallatec.com/" }
+}
+</script>
+<meta name="author" content="Hallatec Technology Solutions LLC" />
+<meta name="copyright" content="Copyright (C) 2026 Hallatec Technology Solutions LLC" />
+<link rel="license" href="https://www.gnu.org/licenses/agpl-3.0.html" />
+<link rel="code-repository" href="https://github.com/hallatec/hallatec-lifeline" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "Lifeline",
+  "codeRepository": "https://github.com/hallatec/hallatec-lifeline",
+  "programmingLanguage": ["HTML", "CSS", "JavaScript"],
+  "runtimePlatform": "Web browser",
+  "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+  "copyrightYear": "2026",
+  "copyrightHolder": { "@type": "Organization", "name": "Hallatec Technology Solutions LLC", "url": "https://hallatec.com/" },
+  "author": { "@type": "Organization", "name": "Hallatec Technology Solutions LLC", "url": "https://hallatec.com/" },
+  "targetProduct": {
+    "@type": "SoftwareApplication",
+    "name": "Lifeline",
+    "url": "https://lifeline.hallatec.com/",
+    "applicationCategory": "SecurityApplication"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Hallatec Forge",
+    "url": "https://forge.hallatec.com/"
+  }
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="../../index.html" aria-label="Hallatec Forge home"><span class="brand-logo" role="img" aria-label="Hallatec"></span><span class="brand-sub">Forge</span></a>
+    <span class="nav-spring"></span>
+    <a class="back-link" href="../../index.html">← All tools</a>
+  </div>
+</header>
+
+<section class="tool-hero">
+  <div class="wrap">
+    <div class="kbadge"><span class="pill"><span class="tag">Phase 2</span> · Class A · Static</span> <span class="chip sev-info">NIST · Recover</span></div>
+    <h1>Can your backup actually <span class="grad-text">recover you in time?</span></h1>
+    <p class="lead">Most backups are never restore-tested until the day they're needed. Lifeline turns your data size, change rate, bandwidth, retention and copies into an honest recovery-feasibility verdict - before an incident answers it for you.</p>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="grid g2" style="align-items:start">
+    <!-- INPUTS -->
+    <section class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3 style="font-size:17px">Your backup setup</h3>
+        <button class="btn btn-ghost btn-sm" id="exampleBtn">Load example</button>
+      </div>
+
+      <p class="control-tag" style="display:inline-block;margin:16px 0 8px"><b>Data</b></p>
+      <div class="field"><label>Total protected data</label>
+        <div class="input-group"><input class="input" id="data" type="number" min="0" value="4" />
+          <span class="unit-toggle" id="dataUnit"><button data-u="GB">GB</button><button data-u="TB" aria-pressed="true">TB</button></span></div>
+      </div>
+      <div class="field"><label>Daily change rate (%)</label>
+        <input class="input" id="change" type="number" min="0" max="100" value="5" />
+        <p class="why">3-5% is typical for VMs; busy databases and file servers run higher.</p></div>
+      <div class="field"><label>Backup frequency</label>
+        <select class="input" id="freq"><option value="1">Continuous / hourly (1h)</option><option value="24" selected>Daily (24h)</option><option value="168">Weekly (168h)</option></select></div>
+
+      <p class="control-tag" style="display:inline-block;margin:12px 0 8px"><b>Retention &amp; efficiency</b></p>
+      <div class="field"><label>Restore points kept</label><input class="input" id="points" type="number" min="1" value="14" /><p class="why">GFS default is roughly 7 daily + 4 weekly + 12 monthly.</p></div>
+      <div class="field"><label>Compression + dedup reduction (%)</label><input class="input" id="comp" type="number" min="0" max="90" value="50" /></div>
+
+      <p class="control-tag" style="display:inline-block;margin:12px 0 8px"><b>Network</b></p>
+      <div class="field"><label>Backup link throughput (effective)</label>
+        <div class="input-group"><input class="input" id="bwUp" type="number" min="0" value="200" />
+          <span class="unit-toggle" id="bwUpUnit"><button data-u="Mbps" aria-pressed="true">Mbps</button><button data-u="MBps">MB/s</button><button data-u="Gbps">Gbps</button></span></div>
+        <p class="why">Measure real throughput, not the rated line speed.</p></div>
+      <div class="field"><label>Restore link / media throughput</label>
+        <div class="input-group"><input class="input" id="bwDown" type="number" min="0" value="100" />
+          <span class="unit-toggle" id="bwDownUnit"><button data-u="Mbps" aria-pressed="true">Mbps</button><button data-u="MBps">MB/s</button><button data-u="Gbps">Gbps</button></span></div>
+        <p class="why">Restore is often slower than backup - different path, cloud egress, media reads.</p></div>
+
+      <p class="control-tag" style="display:inline-block;margin:12px 0 8px"><b>Targets</b></p>
+      <div class="grid g2" style="gap:12px">
+        <div class="field"><label>RTO - max downtime (hrs)</label><input class="input" id="rto" type="number" min="0" value="8" /></div>
+        <div class="field"><label>RPO - max data loss (hrs)</label><input class="input" id="rpo" type="number" min="0" value="4" /></div>
+      </div>
+
+      <p class="control-tag" style="display:inline-block;margin:12px 0 8px"><b>Copies · 3-2-1-1-0</b></p>
+      <div class="grid g2" style="gap:12px">
+        <div class="field"><label>Number of copies</label><input class="input" id="copies" type="number" min="1" value="2" /></div>
+        <div class="field"><label>Different media types</label><input class="input" id="media" type="number" min="1" value="1" /></div>
+      </div>
+      <div class="chips" style="margin-top:4px">
+        <button class="chip-toggle" id="offsite"><span class="dot"></span> Offsite copy</button>
+        <button class="chip-toggle" id="immutable"><span class="dot"></span> Immutable / air-gapped</button>
+        <button class="chip-toggle" id="tested"><span class="dot"></span> Restore tested &lt; 6 months</button>
+      </div>
+
+      <button class="btn btn-primary" id="calcBtn" style="margin-top:22px;width:100%">Calculate recovery readiness</button>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results" class="hidden" style="position:sticky;top:80px">
+      <div class="card card-glow" style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+        <div class="gauge sm" id="lfGauge" data-value="0"></div>
+        <div style="flex:1;min-width:200px">
+          <p class="eyebrow">Verdict</p>
+          <h2 id="verdict" style="margin:6px 0">-</h2>
+          <p id="verdictLine" style="font-size:14.5px">-</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3 style="font-size:16px">The numbers</h3>
+        <div class="subbar" id="metrics" style="margin-top:6px"></div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3 style="font-size:16px;margin-bottom:6px">Restore time vs your downtime target</h3>
+        <div class="bar-compare"><div class="track"><div class="est" id="restoreBar"></div><div class="target-line" id="rtoLine"><span>RTO</span></div></div></div>
+        <p class="muted" id="rtoVerdict" style="margin-top:10px"></p>
+      </div>
+
+      <section class="card" style="margin-top:20px">
+        <h3 style="font-size:16px;margin-bottom:6px">Recovery targets</h3>
+        <p class="muted" style="margin-bottom:14px">Where today's setup lands against your RTO and RPO targets - the tick marks your goal.</p>
+        <div class="meter-grid two">
+          <div class="track-meter" id="rtoMeter"></div>
+          <div class="track-meter" id="rpoMeter"></div>
+        </div>
+      </section>
+
+      <div class="card" style="margin-top:16px">
+        <h3 style="font-size:16px;margin-bottom:10px">3-2-1-1-0 maturity</h3>
+        <div class="meter" id="meter"></div>
+      </div>
+
+      <div style="margin-top:16px" id="fixes"></div>
+
+      <div class="cta" style="margin-top:16px">
+        <p class="eyebrow">Next step</p>
+        <h3 style="font-size:20px">Prove it with a live restore.</h3>
+        <p style="font-size:14.5px">Estimates are planning tools. Hallatec runs a real restore test and designs a backup &amp; DR architecture that meets your actual RTO/RPO.</p>
+        <div class="btn-row"><button class="btn btn-primary" onclick="HTC.print()">⇩ Export</button><a class="btn btn-ghost" href="mailto:hello@hallatec.com?subject=Lifeline%20-%20backup%20%26%20DR%20review">Book a DR review</a></div>
+        <div class="crosslinks"><a href="../lockfall/">See the cost of downtime →</a><a href="../hscore/">Full posture (H-Score) →</a></div>
+      </div>
+      <p class="disclaimer" style="margin-top:14px">Planning estimate; real throughput and dedup vary. Validate with a live restore test - a calculated recovery is not a proven one.</p>
+    </section>
+  </div>
+</main>
+
+<footer class="foot"><div class="wrap"><span class="brand-logo foot-logo" role="img" aria-label="Hallatec"></span><span>© 2026 Hallatec Technology Solutions LLC</span><span class="disclaimer">Lifeline · Backup &amp; Recovery Planner</span></div></footer>
+
+<script src="assets/hallatec.js?v=3"></script>
+<script>
+const $=HTC.$, $$=HTC.$$;
+/* unit toggles */
+$$(".unit-toggle").forEach(t=> t.addEventListener("click", e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  $$("button",t).forEach(x=>x.setAttribute("aria-pressed","false")); b.setAttribute("aria-pressed","true");
+}));
+$$(".chip-toggle").forEach(c=> c.addEventListener("click", ()=> c.setAttribute("aria-pressed", c.getAttribute("aria-pressed")==="true"?"false":"true")));
+const unitOf = id => { const b=$('#'+id+' [aria-pressed="true"]'); return b?b.dataset.u:""; };
+const toGBhr = (val,unit)=> unit==="Mbps"? val*0.45 : unit==="MBps"? val*3.6 : val*450; // Gbps
+const num = id => parseFloat($('#'+id).value)||0;
+const on = id => $('#'+id).getAttribute("aria-pressed")==="true";
+
+function calc(){
+  const dataGB = num("data") * (unitOf("dataUnit")==="TB"?1000:1);
+  const change = num("change")/100;
+  const comp = 1 - num("comp")/100;
+  const points = num("points");
+  const interval = num("freq");
+  const bkGBhr = toGBhr(num("bwUp"), unitOf("bwUpUnit"));
+  const rsGBhr = toGBhr(num("bwDown"), unitOf("bwDownUnit"));
+  const rto = num("rto"), rpo = num("rpo");
+  const copies = num("copies"), media = num("media");
+  const offsite=on("offsite"), immutable=on("immutable"), tested=on("tested");
+
+  const dailyChangeGB = dataGB*change;
+  const reqStorage = dataGB*comp*(1 + points*change);
+  const dailyWindow = bkGBhr? (dailyChangeGB*comp)/bkGBhr : 999;
+  const restoreHrs = rsGBhr? dataGB/rsGBhr : 999;
+  const rpoGap = Math.max(0, interval - rpo);
+  const rtoGap = Math.max(0, restoreHrs - rto);
+
+  // 3-2-1 satisfaction
+  const seg = [copies>=3, media>=2, offsite, immutable, tested];
+  const segCount = seg.filter(Boolean).length;
+
+  // score
+  let s=100;
+  if(rtoGap>0) s -= Math.min(35, 12+rtoGap*1.5);
+  if(rpoGap>0) s -= Math.min(22, 8+rpoGap*0.6);
+  if(!tested) s-=16; if(!offsite) s-=12; if(!immutable) s-=9;
+  if(copies<3) s-=8; if(media<2) s-=6;
+  s = Math.max(0, Math.round(s));
+
+  let verdict, cls;
+  if(s>=78 && rtoGap===0 && offsite && tested){ verdict="Covered"; cls="is-ok"; }
+  else if(s>=50 && restoreHrs<9999){ verdict="Partially covered"; cls="is-warn"; }
+  else { verdict="Not covered"; cls="is-bad"; }
+
+  return {dataGB,reqStorage,dailyWindow,restoreHrs,rpoGap,rtoGap,rto,rpo,interval,seg,segCount,s,verdict,cls,tested,offsite,immutable,copies,media};
+}
+
+const hrs = h => h>=9999? "-" : h>=48? (h/24).toFixed(1)+" days" : h.toFixed(h<10?1:0)+" h";
+const gb = g => g>=1000? (g/1000).toFixed(2)+" TB" : Math.round(g)+" GB";
+
+function render(){
+  const r=calc();
+  $("#results").classList.remove("hidden");
+  const g=$("#lfGauge"); g.dataset.value=r.s;
+  HTC.gauge(g, r.s, { band:r.verdict, label:"Recovery readiness" });
+  const v=$("#verdict"); v.textContent=r.verdict;
+  const vc=g.closest(".card");
+  $("#verdictLine").innerHTML = r.verdict==="Covered"
+    ? "With today's setup a full restore is ≈ <b>"+hrs(r.restoreHrs)+"</b> against your "+r.rto+" h target - you're within tolerance."
+    : "With today's setup a full restore is ≈ <b>"+hrs(r.restoreHrs)+"</b> against your "+r.rto+" h target - "+(r.rtoGap>0?("about <b>"+hrs(r.rtoGap)+"</b> over."):"close, but copies/testing gaps remain.");
+  // metrics
+  const M=[["Required backup storage",gb(r.reqStorage)],["Daily backup window",hrs(r.dailyWindow)],["Full restore time",hrs(r.restoreHrs)],
+    ["RPO gap (data at risk)",r.rpoGap>0?("+"+hrs(r.rpoGap)):"none"],["RTO gap (over target)",r.rtoGap>0?("+"+hrs(r.rtoGap)):"none"]];
+  $("#metrics").innerHTML = M.map(m=>'<div class="row" style="grid-template-columns:1fr auto"><span class="lbl">'+m[0]+'</span><span class="val" style="min-width:auto">'+m[1]+'</span></div>').join("");
+  // restore bar
+  const scaleMax = Math.max(r.restoreHrs, r.rto)*1.2 || 1;
+  $("#restoreBar").style.width = Math.min(100, r.restoreHrs/scaleMax*100)+"%";
+  $("#rtoLine").style.left = Math.min(98, r.rto/scaleMax*100)+"%";
+  $("#rtoVerdict").innerHTML = r.rtoGap>0
+    ? '<span class="chip sev-fail"><span class="ic">✕</span> ≈ '+hrs(r.rtoGap)+' over target</span> - restore is slower than your business can tolerate.'
+    : '<span class="chip sev-pass"><span class="ic">✓</span> Within target</span> - estimated restore fits inside your downtime tolerance.';
+  // meter
+  const segLabels=[["3","copies"],["2","media"],["1","offsite"],["+1","immutable"],["0","tested"]];
+  $("#meter").innerHTML = segLabels.map((l,i)=>
+    '<div class="seg '+(r.seg[i]?"on":"off")+'"><div class="ic">'+(r.seg[i]?"✓":"-")+'</div><div class="lb"><b style="color:var(--text)">'+l[0]+'</b> '+l[1]+'</div></div>').join("");
+  // recovery targets (track meters): estimated restore vs target RTO, delivered data-loss window vs target RPO
+  const rtoMax = Math.max(r.restoreHrs<9999?r.restoreHrs:r.rto, r.rto, 1)*1.25;
+  HTC.trackMeter($("#rtoMeter"), r.restoreHrs<9999?r.restoreHrs:rtoMax, { label:"RTO - est. restore time", max:rtoMax, display:hrs(r.restoreHrs), target:r.rto });
+  const rpoMax = Math.max(r.interval, r.rpo, 1)*1.25;
+  HTC.trackMeter($("#rpoMeter"), r.interval, { label:"RPO - data-loss window", max:rpoMax, display:hrs(r.interval), target:r.rpo });
+  // fixes
+  const F=[];
+  if(!r.tested) F.push(["Run a real restore test","CIS 11.5","An untested backup is a hope, not a plan. Schedule a quarterly restore drill."]);
+  if(r.rtoGap>0) F.push(["Close the restore-time gap","NIST RC.RP","Add a local restore tier or faster media so recovery beats your RTO."]);
+  if(!r.offsite) F.push(["Add an offsite copy","CIS 11.4","Keep one copy off your primary site to survive fire, theft or site loss."]);
+  if(!r.immutable) F.push(["Add an immutable / air-gapped copy","CIS 11.4","Ransomware targets backups first - immutability is your last line."]);
+  if(r.rpoGap>0) F.push(["Back up more frequently","NIST RC.RP","Shrink the window between backups to meet your data-loss target."]);
+  $("#fixes").innerHTML = '<h3 style="font-size:16px;margin-bottom:10px">Fix first</h3>'+ (F.length? F.slice(0,4).map((f,i)=>
+    '<div class="rec"><span class="rank">'+(i+1)+'</span><div class="rbody"><h4>'+f[0]+'</h4><p>'+f[2]+'</p><div class="rec-meta"><span class="control-tag"><b>'+f[1]+'</b></span></div></div></div>').join("")
+    : '<div class="alert"><span class="ic">✓</span><span>Strong recovery posture - keep testing on a schedule.</span></div>');
+  HTC.reveal($("#results"));
+}
+$("#calcBtn").addEventListener("click", render);
+$("#exampleBtn").addEventListener("click", ()=>{
+  $("#data").value=8; $("#change").value=6; $("#points").value=14; $("#comp").value=45;
+  $("#bwUp").value=300; $("#bwDown").value=80; $("#rto").value=6; $("#rpo").value=2; $("#copies").value=2; $("#media").value=1;
+  ["offsite"].forEach(id=>$('#'+id).setAttribute("aria-pressed","true"));
+  ["immutable","tested"].forEach(id=>$('#'+id).setAttribute("aria-pressed","false"));
+  render();
+});
+</script>
+</body>
+</html>
